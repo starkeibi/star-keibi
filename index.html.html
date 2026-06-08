@@ -9,8 +9,6 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--bl:#185FA5;--bldk:#0C447C;--bllt:#E6F1FB;--blmd:#378ADD;--acc:#EF9F27;--aclt:#FAEEDA;--acdk:#412402;--text:#1a1a2e;--muted:#64748b;--border:#B5D4F4;--radius:8px;--radius-lg:12px;}
 body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;color:var(--text);background:#fff;}
-
-/* NAV */
 .nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:var(--bldk);border-bottom:3px solid var(--acc);position:sticky;top:0;z-index:100;}
 .nav-logo{display:flex;align-items:center;gap:10px;}
 .nav-logo-icon{width:36px;height:36px;background:var(--acc);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--acdk);font-size:20px;}
@@ -19,12 +17,10 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .nav-links{display:flex;gap:0;}
 .nav-links a{color:#B5D4F4;font-size:12px;cursor:pointer;padding:6px 12px;border-radius:var(--radius);transition:background 0.15s,color 0.15s;}
 .nav-links a:hover{background:rgba(255,255,255,0.1);color:#fff;}
-.nav-links a.recruit-link{background:var(--acc);color:var(--acdk);font-weight:700;border-radius:var(--radius);}
+.nav-links a.recruit-link{background:var(--acc);color:var(--acdk);font-weight:700;}
 .nav-links a.recruit-link:hover{opacity:0.88;}
 .nav-tel{color:var(--acc);font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;}
-
-/* HERO */
-.hero{background:var(--bldk);padding:0;display:grid;grid-template-columns:1fr 1fr;min-height:280px;}
+.hero{background:var(--bldk);display:grid;grid-template-columns:1fr 1fr;min-height:280px;}
 .hero-left{padding:3rem 2rem 2.5rem;display:flex;flex-direction:column;justify-content:center;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:var(--acdk);font-size:11px;font-weight:700;letter-spacing:0.12em;padding:4px 12px;border-radius:var(--radius);margin-bottom:1.2rem;width:fit-content;}
 .hero h1{color:#fff;font-size:34px;font-weight:700;line-height:1.2;margin-bottom:1rem;}
@@ -33,19 +29,15 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
 .btn-acc{background:var(--acc);color:var(--acdk);font-size:13px;font-weight:700;padding:11px 24px;border:none;border-radius:var(--radius);cursor:pointer;transition:opacity 0.15s;}
 .btn-acc:hover{opacity:0.88;}
-.btn-ghost{background:transparent;color:#fff;font-size:13px;padding:11px 24px;border:1px solid rgba(255,255,255,0.35);border-radius:var(--radius);cursor:pointer;transition:background 0.15s;}
+.btn-ghost{background:transparent;color:#fff;font-size:13px;padding:11px 24px;border:1px solid rgba(255,255,255,0.35);border-radius:var(--radius);cursor:pointer;}
 .btn-ghost:hover{background:rgba(255,255,255,0.08);}
 .hero-right{background:var(--bl);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
 .hstat{padding:1.5rem 1.2rem;border-left:0.5px solid rgba(255,255,255,0.1);border-bottom:0.5px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;justify-content:flex-end;}
 .hstat:nth-child(odd){border-left:none;}
 .hstat-num{color:var(--acc);font-size:26px;font-weight:700;line-height:1;}
 .hstat-label{color:#85B7EB;font-size:11px;margin-top:4px;}
-
-/* STRIP */
 .strip{background:var(--acc);padding:0.65rem 2rem;display:flex;gap:2rem;align-items:center;flex-wrap:wrap;}
 .strip-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--acdk);font-weight:700;white-space:nowrap;}
-
-/* PAGE NAV */
 .page-nav{background:#fff;border-bottom:3px solid var(--bllt);display:flex;}
 .page-nav-btn{flex:1;padding:0.9rem 0;text-align:center;font-size:13px;color:var(--bl);cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;margin-bottom:-3px;transition:background 0.15s;}
 .page-nav-btn.active{border-bottom:3px solid var(--bl);font-weight:700;background:var(--bllt);}
@@ -53,19 +45,13 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .page-nav-btn.recruit-tab{color:var(--acdk);background:var(--aclt);}
 .page-nav-btn.recruit-tab.active{border-bottom-color:var(--acc);background:var(--acc);color:var(--acdk);}
 .page-nav-btn.recruit-tab:hover:not(.active){background:#fde8a0;}
-
-/* PAGES */
 .page{display:none;padding:2.5rem 2rem;}
 .page.active{display:block;}
 .page#page-recruit{padding:0;}
-
-/* LABELS */
 .sec-eye{display:inline-flex;align-items:center;gap:6px;background:var(--bllt);color:var(--bldk);font-size:11px;font-weight:700;letter-spacing:0.1em;padding:3px 10px;border-radius:var(--radius);margin-bottom:10px;}
 .sec-h2{font-size:22px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .sec-h2 span{color:var(--bl);}
 .sec-p{font-size:14px;color:var(--muted);line-height:1.75;max-width:500px;margin-bottom:1.5rem;}
-
-/* SERVICES */
 .services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
 .svc{padding:1.3rem 1.1rem;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:#fff;}
 .svc:nth-child(3n){border-right:none;}
@@ -73,23 +59,17 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .svc-icon{width:36px;height:36px;border-radius:var(--radius);background:var(--bllt);display:flex;align-items:center;justify-content:center;color:var(--bl);font-size:18px;margin-bottom:0.75rem;}
 .svc h3{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
 .svc p{font-size:12px;color:var(--muted);line-height:1.6;}
-
-/* REASONS */
 .reason-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.5rem;}
 .reason{display:flex;gap:12px;align-items:flex-start;padding:1rem;border-radius:var(--radius-lg);background:#f8fafc;}
 .reason-icon{width:38px;height:38px;min-width:38px;border-radius:var(--radius);background:var(--bllt);display:flex;align-items:center;justify-content:center;color:var(--bl);font-size:18px;}
 .reason h3{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
 .reason p{font-size:12px;color:var(--muted);line-height:1.6;}
-
-/* FLOW */
 .flow-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:1.5rem;border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
 .fstep{padding:1.2rem 1rem;border-right:0.5px solid var(--border);background:#fff;}
 .fstep:last-child{border-right:none;}
 .fnum{width:32px;height:32px;border-radius:50%;background:var(--bl);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-bottom:8px;}
 .fstep h3{font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px;}
 .fstep p{font-size:11px;color:var(--muted);}
-
-/* PRICE */
 .price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:1.5rem;}
 .price-card{border-radius:var(--radius-lg);overflow:hidden;border:0.5px solid var(--border);background:#fff;}
 .price-card.featured{border:2px solid var(--bl);}
@@ -108,8 +88,6 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .price-note{font-size:11px;color:#94a3b8;margin-top:8px;line-height:1.5;}
 .info-box{margin-top:1.5rem;border-left:3px solid var(--bl);background:var(--bllt);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.2rem;}
 .info-box p{font-size:13px;color:var(--bldk);line-height:1.7;}
-
-/* ESTIMATE */
 .est-wrap{max-width:620px;}
 .est-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
 .est-field{display:flex;flex-direction:column;gap:4px;}
@@ -146,8 +124,7 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .divider{border:none;border-top:0.5px solid var(--border);margin:1.2rem 0;}
 .sec-title-sm{font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
 .sec-title-sm i{font-size:16px;color:var(--bl);}
-
-/* QUOTE FORM */
+/* FORM */
 .form-wrap{max-width:560px;}
 .form-row{margin-bottom:1rem;}
 .form-row label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px;}
@@ -158,15 +135,16 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .req{color:var(--bl);font-size:11px;margin-left:4px;}
 .submit-btn{background:var(--bl);color:#fff;font-size:14px;font-weight:700;padding:12px;border:none;border-radius:var(--radius);cursor:pointer;width:100%;margin-top:4px;transition:opacity 0.15s;}
 .submit-btn:hover{opacity:0.88;}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed;}
 .form-note{font-size:12px;color:#94a3b8;margin-top:8px;line-height:1.6;}
 .sent-msg{display:none;background:var(--bllt);border-radius:var(--radius-lg);padding:2rem;text-align:center;margin-top:1rem;}
 .sent-msg i{font-size:32px;color:var(--bl);margin-bottom:8px;display:block;}
 .sent-msg h3{font-size:16px;font-weight:700;color:var(--bldk);margin-bottom:4px;}
 .sent-msg p{font-size:13px;color:var(--bl);}
-
-/* RECRUIT - bold design */
+.err-msg{background:#FCEBEB;border-left:3px solid #E24B4A;border-radius:0 var(--radius) var(--radius) 0;padding:0.75rem 1rem;margin-top:0.75rem;font-size:13px;color:#A32D2D;display:none;}
+/* RECRUIT */
 .recruit-hero{background:var(--bldk);padding:2.5rem 2rem;border-bottom:4px solid var(--acc);position:relative;overflow:hidden;}
-.recruit-hero::before{content:"RECRUIT";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:80px;font-weight:900;color:rgba(255,255,255,0.04);letter-spacing:0.05em;pointer-events:none;white-space:nowrap;}
+.recruit-hero::before{content:"RECRUIT";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:80px;font-weight:900;color:rgba(255,255,255,0.04);pointer-events:none;white-space:nowrap;}
 .rh-eye{display:inline-flex;align-items:center;gap:6px;background:var(--acc);color:var(--acdk);font-size:11px;font-weight:700;letter-spacing:0.15em;padding:4px 14px;border-radius:4px;margin-bottom:1rem;}
 .rh-h1{color:#fff;font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
 .rh-h1 span{color:var(--acc);}
@@ -215,8 +193,6 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .apply-bar-txt{color:var(--acdk);font-size:14px;font-weight:700;}
 .apply-bar-txt span{font-size:12px;font-weight:400;margin-left:8px;}
 .btn-apply-bar{background:var(--bldk);color:#fff;font-size:13px;font-weight:700;padding:10px 24px;border:none;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:6px;}
-
-/* CTA & FOOTER */
 .cta-bar{background:var(--bldk);padding:2rem;display:flex;justify-content:space-between;align-items:center;border-top:4px solid var(--acc);}
 .cta-txt h3{color:#fff;font-size:17px;font-weight:700;margin-bottom:4px;}
 .cta-txt p{color:#85B7EB;font-size:13px;}
@@ -322,7 +298,7 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
       <div style="font-size:16px;font-weight:700;color:var(--text);">スタッフを随時募集中！未経験・経験者歓迎</div>
       <div style="font-size:13px;color:var(--muted);margin-top:4px;">日勤¥10,500〜 / 夜勤¥13,000〜（日給）</div>
     </div>
-    <button class="btn-acc" onclick="showPage('recruit')" style="white-space:nowrap;"><i class="ti ti-users" style="font-size:15px;vertical-align:-2px;margin-right:4px;"></i>採用情報を見る</button>
+    <button class="btn-acc" onclick="showPage('recruit')"><i class="ti ti-users" style="font-size:15px;vertical-align:-2px;margin-right:4px;"></i>採用情報を見る</button>
   </div>
 </div>
 
@@ -375,9 +351,7 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
       </div>
     </div>
   </div>
-  <div class="info-box">
-    <p><strong>機材費・その他について：</strong>日勤・夜勤ともに、誘導棒・カラーコーン・夜間照明等の機材費は別途となります。交通費・宿泊費が発生する場合も別途ご相談ください。</p>
-  </div>
+  <div class="info-box"><p><strong>機材費・その他について：</strong>日勤・夜勤ともに、誘導棒・カラーコーン・夜間照明等の機材費は別途となります。交通費・宿泊費が発生する場合も別途ご相談ください。</p></div>
   <div style="margin-top:1.5rem;text-align:center;">
     <button class="btn-acc" onclick="showPage('estimate')">かんたん見積もりを試算する</button>
   </div>
@@ -393,9 +367,7 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
     <div class="est-grid2">
       <div class="est-field"><label><i class="ti ti-sun"></i>勤務区分</label><select id="shift" onchange="calc()"><option value="nikkin">日勤</option><option value="yakin">夜勤</option></select></div>
       <div class="est-field"><label><i class="ti ti-calendar"></i>日数</label>
-        <select id="days" onchange="calc()">
-          <option value="1">1日</option><option value="2">2日</option><option value="3">3日</option><option value="4">4日</option><option value="5">5日</option><option value="7">7日</option><option value="10">10日</option><option value="14">14日</option><option value="20">20日</option><option value="30">30日</option>
-        </select>
+        <select id="days" onchange="calc()"><option value="1">1日</option><option value="2">2日</option><option value="3">3日</option><option value="4">4日</option><option value="5">5日</option><option value="7">7日</option><option value="10">10日</option><option value="14">14日</option><option value="20">20日</option><option value="30">30日</option></select>
       </div>
     </div>
     <div class="rate-note"><span>誘導員B：日勤 ¥18,000 / 夜勤 ¥27,000</span><span>誘導員A：日勤 ¥23,000 / 夜勤 ¥32,000</span></div>
@@ -448,38 +420,43 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
   </div>
 </div>
 
-<!-- QUOTE -->
+<!-- QUOTE FORM (Formspree) -->
 <div class="page" id="page-quote">
   <div class="sec-eye"><i class="ti ti-file-text"></i>Estimate</div>
   <h2 class="sec-h2">無料<span>お見積もり</span>フォーム</h2>
   <p class="sec-p">下記フォームにご記入ください。内容を確認のうえ、原則即日にご連絡いたします。</p>
-  <div class="form-wrap" id="quote-form">
-    <div class="form-2col">
-      <div class="form-row"><label>お名前<span class="req">必須</span></label><input type="text" placeholder="山田 太郎"></div>
-      <div class="form-row"><label>会社名</label><input type="text" placeholder="株式会社〇〇"></div>
-    </div>
-    <div class="form-2col">
-      <div class="form-row"><label>電話番号<span class="req">必須</span></label><input type="tel" placeholder="082-000-0000"></div>
-      <div class="form-row"><label>メールアドレス<span class="req">必須</span></label><input type="email" placeholder="example@email.com"></div>
-    </div>
-    <div class="form-row"><label>業務の種類<span class="req">必須</span></label>
-      <select><option value="">選択してください</option><option>工事現場の交通誘導</option><option>イベント交通整理</option><option>道路規制・片側通行</option><option>工場・施設内誘導</option><option>大型車両誘導</option><option>その他</option></select>
-    </div>
-    <div class="form-2col">
-      <div class="form-row"><label>希望日<span class="req">必須</span></label><input type="date"></div>
-      <div class="form-row"><label>必要人数の目安</label>
-        <select><option value="">未定・相談したい</option><option>1名</option><option>2〜3名</option><option>4〜5名</option><option>6名以上</option></select>
+  <div class="form-wrap">
+    <form id="quote-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="【スター】お見積もりのご依頼">
+      <input type="hidden" name="_replyto" value="">
+      <div class="form-2col">
+        <div class="form-row"><label>お名前<span class="req">必須</span></label><input type="text" name="お名前" placeholder="山田 太郎" required></div>
+        <div class="form-row"><label>会社名</label><input type="text" name="会社名" placeholder="株式会社〇〇"></div>
       </div>
+      <div class="form-2col">
+        <div class="form-row"><label>電話番号<span class="req">必須</span></label><input type="tel" name="電話番号" placeholder="082-000-0000" required></div>
+        <div class="form-row"><label>メールアドレス<span class="req">必須</span></label><input type="email" name="email" placeholder="example@email.com" required></div>
+      </div>
+      <div class="form-row"><label>業務の種類<span class="req">必須</span></label>
+        <select name="業務の種類" required><option value="">選択してください</option><option>工事現場の交通誘導</option><option>イベント交通整理</option><option>道路規制・片側通行</option><option>工場・施設内誘導</option><option>大型車両誘導</option><option>その他</option></select>
+      </div>
+      <div class="form-2col">
+        <div class="form-row"><label>希望日<span class="req">必須</span></label><input type="date" name="希望日" required></div>
+        <div class="form-row"><label>必要人数の目安</label>
+          <select name="必要人数"><option value="">未定・相談したい</option><option>1名</option><option>2〜3名</option><option>4〜5名</option><option>6名以上</option></select>
+        </div>
+      </div>
+      <div class="form-row"><label>現場の所在地</label><input type="text" name="現場の所在地" placeholder="広島市中区〇〇"></div>
+      <div class="form-row"><label>業務内容・ご要望</label><textarea name="業務内容・ご要望" placeholder="現場の状況、作業内容、時間帯、特記事項などをご記入ください。"></textarea></div>
+      <button type="submit" class="submit-btn" id="quote-submit-btn">見積もりを依頼する</button>
+      <p class="form-note">※送信後、star@star-keibi.com に届きます。担当者より原則即日ご連絡いたします。緊急の場合はお電話（082-537-0395）にてご連絡ください。</p>
+    </form>
+    <div class="err-msg" id="quote-err">送信に失敗しました。お電話（082-537-0395）にてご連絡ください。</div>
+    <div class="sent-msg" id="quote-sent">
+      <i class="ti ti-circle-check"></i>
+      <h3>送信が完了しました</h3>
+      <p>お見積もりのご依頼ありがとうございます。<br>担当者より原則即日ご連絡いたします。</p>
     </div>
-    <div class="form-row"><label>現場の所在地</label><input type="text" placeholder="広島市中区〇〇"></div>
-    <div class="form-row"><label>業務内容・ご要望</label><textarea placeholder="現場の状況、作業内容、時間帯、特記事項などをご記入ください。"></textarea></div>
-    <button class="submit-btn" onclick="submitForm()">見積もりを依頼する</button>
-    <p class="form-note">※送信後、担当者より折り返しご連絡いたします。緊急の場合はお電話（082-537-0395）にてご連絡ください。</p>
-  </div>
-  <div class="sent-msg" id="sent-msg">
-    <i class="ti ti-circle-check"></i>
-    <h3>送信が完了しました</h3>
-    <p>お見積もりのご依頼ありがとうございます。<br>担当者より原則即日ご連絡いたします。</p>
   </div>
 </div>
 
@@ -493,14 +470,8 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
   </div>
   <div class="jobs">
     <div class="job" style="border-right:0.5px solid var(--border);">
-      <div class="job-header">
-        <div class="job-type-badge"><i class="ti ti-sun"></i>日勤</div>
-        <div class="job-title">交通誘導スタッフ</div>
-        <div class="job-desc-short">日中の現場で安全を守る。生活リズムを崩さず働ける。</div>
-      </div>
-      <div class="salary-block">
-        <div class="salary-yen">¥10,500</div><div class="salary-unit">〜 / 日給（税別）</div><div class="salary-note">※経験・資格で優遇</div>
-      </div>
+      <div class="job-header"><div class="job-type-badge"><i class="ti ti-sun"></i>日勤</div><div class="job-title">交通誘導スタッフ</div><div class="job-desc-short">日中の現場で安全を守る。生活リズムを崩さず働ける。</div></div>
+      <div class="salary-block"><div class="salary-yen">¥10,500</div><div class="salary-unit">〜 / 日給（税別）</div><div class="salary-note">※経験・資格で優遇</div></div>
       <div class="job-details">
         <div class="detail-row"><i class="ti ti-map-pin detail-icon"></i><span class="detail-key">勤務地</span><span class="detail-val">広島県内各現場</span></div>
         <div class="detail-row"><i class="ti ti-clock detail-icon"></i><span class="detail-key">勤務時間</span><span class="detail-val">日中シフト（応相談）</span></div>
@@ -508,17 +479,11 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
         <div class="detail-row"><i class="ti ti-certificate detail-icon"></i><span class="detail-key">資格</span><span class="detail-val">不問・未経験歓迎</span></div>
         <div class="detail-row"><i class="ti ti-user-plus detail-icon"></i><span class="detail-key">雇用形態</span><span class="detail-val">正社員・アルバイト</span></div>
       </div>
-      <div class="job-cta"><button class="btn-apply" onclick="showPage('quote')"><i class="ti ti-send"></i>この職種に応募する</button></div>
+      <div class="job-cta"><button class="btn-apply" onclick="showPage('recruit-form')"><i class="ti ti-send"></i>この職種に応募する</button></div>
     </div>
     <div class="job">
-      <div class="job-header night">
-        <div class="job-type-badge night-badge"><i class="ti ti-moon"></i>夜勤</div>
-        <div class="job-title">交通誘導スタッフ</div>
-        <div class="job-desc-short">夜間の道路工事現場を守る。夜勤手当で高収入を実現。</div>
-      </div>
-      <div class="salary-block night-sal">
-        <div class="salary-yen">¥13,000</div><div class="salary-unit">〜 / 日給（税別）</div><div class="salary-note">※夜勤手当含む</div>
-      </div>
+      <div class="job-header night"><div class="job-type-badge night-badge"><i class="ti ti-moon"></i>夜勤</div><div class="job-title">交通誘導スタッフ</div><div class="job-desc-short">夜間の道路工事現場を守る。夜勤手当で高収入を実現。</div></div>
+      <div class="salary-block night-sal"><div class="salary-yen">¥13,000</div><div class="salary-unit">〜 / 日給（税別）</div><div class="salary-note">※夜勤手当含む</div></div>
       <div class="job-details">
         <div class="detail-row"><i class="ti ti-map-pin detail-icon"></i><span class="detail-key">勤務地</span><span class="detail-val">広島県内各現場</span></div>
         <div class="detail-row"><i class="ti ti-clock detail-icon"></i><span class="detail-key">勤務時間</span><span class="detail-val">夜間・深夜シフト</span></div>
@@ -526,7 +491,7 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
         <div class="detail-row"><i class="ti ti-certificate detail-icon"></i><span class="detail-key">資格</span><span class="detail-val">不問・未経験歓迎</span></div>
         <div class="detail-row"><i class="ti ti-user-plus detail-icon"></i><span class="detail-key">雇用形態</span><span class="detail-val">正社員・アルバイト</span></div>
       </div>
-      <div class="job-cta"><button class="btn-apply night-btn" onclick="showPage('quote')"><i class="ti ti-send"></i>この職種に応募する</button></div>
+      <div class="job-cta"><button class="btn-apply night-btn" onclick="showPage('recruit-form')"><i class="ti ti-send"></i>この職種に応募する</button></div>
     </div>
   </div>
   <div class="appeal-strip">
@@ -548,6 +513,44 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
   <div class="apply-bar">
     <div class="apply-bar-txt">お気軽にお問い合わせください<span>電話でのご応募も歓迎します</span></div>
     <button class="btn-apply-bar" onclick="window.location.href='tel:0825370395'"><i class="ti ti-phone"></i>082-537-0395</button>
+  </div>
+</div>
+
+<!-- RECRUIT FORM (Formspree) -->
+<div class="page" id="page-recruit-form">
+  <div class="sec-eye"><i class="ti ti-users"></i>採用応募フォーム</div>
+  <h2 class="sec-h2">採用に<span>ご応募</span>いただく方へ</h2>
+  <p class="sec-p">下記フォームにご記入ください。担当者より折り返しご連絡いたします。</p>
+  <div class="form-wrap">
+    <form id="recruit-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="【スター】採用のご応募">
+      <div class="form-2col">
+        <div class="form-row"><label>お名前<span class="req">必須</span></label><input type="text" name="お名前" placeholder="山田 太郎" required></div>
+        <div class="form-row"><label>ふりがな</label><input type="text" name="ふりがな" placeholder="やまだ たろう"></div>
+      </div>
+      <div class="form-2col">
+        <div class="form-row"><label>電話番号<span class="req">必須</span></label><input type="tel" name="電話番号" placeholder="082-000-0000" required></div>
+        <div class="form-row"><label>メールアドレス</label><input type="email" name="email" placeholder="example@email.com"></div>
+      </div>
+      <div class="form-row"><label>ご希望の勤務区分<span class="req">必須</span></label>
+        <select name="勤務区分" required><option value="">選択してください</option><option>日勤</option><option>夜勤</option><option>どちらでも可</option></select>
+      </div>
+      <div class="form-row"><label>雇用形態のご希望</label>
+        <select name="雇用形態"><option value="">選択してください</option><option>正社員</option><option>アルバイト</option><option>どちらでも可</option></select>
+      </div>
+      <div class="form-row"><label>警備業務のご経験</label>
+        <select name="警備業務の経験"><option value="">選択してください</option><option>未経験</option><option>1年未満</option><option>1〜3年</option><option>3年以上</option></select>
+      </div>
+      <div class="form-row"><label>自己PR・ご質問など</label><textarea name="自己PR・ご質問" placeholder="経験・資格・ご質問などご自由にお書きください。"></textarea></div>
+      <button type="submit" class="submit-btn" id="recruit-submit-btn">応募する</button>
+      <p class="form-note">※送信後、star@star-keibi.com に届きます。担当者より折り返しご連絡いたします。電話でのご応募も歓迎します（082-537-0395）。</p>
+    </form>
+    <div class="err-msg" id="recruit-err">送信に失敗しました。お電話（082-537-0395）にてご連絡ください。</div>
+    <div class="sent-msg" id="recruit-sent">
+      <i class="ti ti-circle-check"></i>
+      <h3>応募が完了しました</h3>
+      <p>ご応募ありがとうございます。<br>担当者より折り返しご連絡いたします。</p>
+    </div>
   </div>
 </div>
 
@@ -577,7 +580,12 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.page-nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  document.getElementById('tab-'+id).classList.add('active');
+  const tab=document.getElementById('tab-'+id);
+  if(tab) tab.classList.add('active');
+  else if(id==='recruit-form'){
+    const rt=document.getElementById('tab-recruit');
+    if(rt) rt.classList.add('active');
+  }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function togClick(k){
@@ -615,11 +623,8 @@ function calc(){
   if(equipFlg) rows.push({l:'資機材一式',v:equipTotal});
   if(travelFee>0) rows.push({l:'出張交通費（'+travelLabel+'）',v:travelFee,ask:travelAsk});
   let html='';
-  if(rows.length===0){
-    html='<div class="bk-row"><span class="bk-label">人数を選択してください</span><span style="color:rgba(255,255,255,0.3)">—</span></div>';
-  } else {
-    rows.forEach(r=>{html+=`<div class="bk-row"><span class="bk-label">${r.l}</span><span class="bk-val">${fmt(r.v)}${r.ask?'〜':''}</span></div>`;});
-  }
+  if(rows.length===0){html='<div class="bk-row"><span class="bk-label">人数を選択してください</span><span style="color:rgba(255,255,255,0.3)">—</span></div>';}
+  else{rows.forEach(r=>{html+=`<div class="bk-row"><span class="bk-label">${r.l}</span><span class="bk-val">${fmt(r.v)}${r.ask?'〜':''}</span></div>`;});}
   html+=`<div class="bk-row"><span class="bk-label">合計（税別）</span><span class="bk-val">${fmt(total)}${suf}</span></div>`;
   document.getElementById('breakdown').innerHTML=html;
 }
@@ -634,10 +639,34 @@ function resetCalc(){
   document.getElementById('tog-hol').classList.remove('on');
   setTravel(0,0,'なし',false);
 }
-function submitForm(){
-  document.getElementById('quote-form').style.display='none';
-  document.getElementById('sent-msg').style.display='block';
+
+// Formspree送信処理
+function setupForm(formId, btnId, sentId, errId){
+  const form=document.getElementById(formId);
+  if(!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn=document.getElementById(btnId);
+    btn.disabled=true;
+    btn.textContent='送信中...';
+    document.getElementById(errId).style.display='none';
+    try{
+      const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+      if(res.ok){
+        form.style.display='none';
+        document.getElementById(sentId).style.display='block';
+      } else {
+        throw new Error();
+      }
+    } catch(err){
+      btn.disabled=false;
+      btn.textContent=formId==='quote-form'?'見積もりを依頼する':'応募する';
+      document.getElementById(errId).style.display='block';
+    }
+  });
 }
+setupForm('quote-form','quote-submit-btn','quote-sent','quote-err');
+setupForm('recruit-form','recruit-submit-btn','recruit-sent','recruit-err');
 calc();
 </script>
 </body>
