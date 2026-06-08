@@ -1,1 +1,644 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>有限会社スター | 広島の交通誘導業務</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--bl:#185FA5;--bldk:#0C447C;--bllt:#E6F1FB;--blmd:#378ADD;--acc:#EF9F27;--aclt:#FAEEDA;--acdk:#412402;--text:#1a1a2e;--muted:#64748b;--border:#B5D4F4;--radius:8px;--radius-lg:12px;}
+body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;color:var(--text);background:#fff;}
 
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:var(--bldk);border-bottom:3px solid var(--acc);position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-icon{width:36px;height:36px;background:var(--acc);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--acdk);font-size:20px;}
+.nav-logo-text{color:#fff;font-size:17px;font-weight:700;letter-spacing:0.04em;}
+.nav-logo-sub{color:#85B7EB;font-size:11px;}
+.nav-links{display:flex;gap:0;}
+.nav-links a{color:#B5D4F4;font-size:12px;cursor:pointer;padding:6px 12px;border-radius:var(--radius);transition:background 0.15s,color 0.15s;}
+.nav-links a:hover{background:rgba(255,255,255,0.1);color:#fff;}
+.nav-links a.recruit-link{background:var(--acc);color:var(--acdk);font-weight:700;border-radius:var(--radius);}
+.nav-links a.recruit-link:hover{opacity:0.88;}
+.nav-tel{color:var(--acc);font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;}
+
+/* HERO */
+.hero{background:var(--bldk);padding:0;display:grid;grid-template-columns:1fr 1fr;min-height:280px;}
+.hero-left{padding:3rem 2rem 2.5rem;display:flex;flex-direction:column;justify-content:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:var(--acdk);font-size:11px;font-weight:700;letter-spacing:0.12em;padding:4px 12px;border-radius:var(--radius);margin-bottom:1.2rem;width:fit-content;}
+.hero h1{color:#fff;font-size:34px;font-weight:700;line-height:1.2;margin-bottom:1rem;}
+.hero h1 span{color:var(--acc);}
+.hero p{color:#85B7EB;font-size:14px;line-height:1.75;margin-bottom:1.5rem;max-width:340px;}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-acc{background:var(--acc);color:var(--acdk);font-size:13px;font-weight:700;padding:11px 24px;border:none;border-radius:var(--radius);cursor:pointer;transition:opacity 0.15s;}
+.btn-acc:hover{opacity:0.88;}
+.btn-ghost{background:transparent;color:#fff;font-size:13px;padding:11px 24px;border:1px solid rgba(255,255,255,0.35);border-radius:var(--radius);cursor:pointer;transition:background 0.15s;}
+.btn-ghost:hover{background:rgba(255,255,255,0.08);}
+.hero-right{background:var(--bl);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
+.hstat{padding:1.5rem 1.2rem;border-left:0.5px solid rgba(255,255,255,0.1);border-bottom:0.5px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;justify-content:flex-end;}
+.hstat:nth-child(odd){border-left:none;}
+.hstat-num{color:var(--acc);font-size:26px;font-weight:700;line-height:1;}
+.hstat-label{color:#85B7EB;font-size:11px;margin-top:4px;}
+
+/* STRIP */
+.strip{background:var(--acc);padding:0.65rem 2rem;display:flex;gap:2rem;align-items:center;flex-wrap:wrap;}
+.strip-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--acdk);font-weight:700;white-space:nowrap;}
+
+/* PAGE NAV */
+.page-nav{background:#fff;border-bottom:3px solid var(--bllt);display:flex;}
+.page-nav-btn{flex:1;padding:0.9rem 0;text-align:center;font-size:13px;color:var(--bl);cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;margin-bottom:-3px;transition:background 0.15s;}
+.page-nav-btn.active{border-bottom:3px solid var(--bl);font-weight:700;background:var(--bllt);}
+.page-nav-btn:hover:not(.active){background:var(--bllt);}
+.page-nav-btn.recruit-tab{color:var(--acdk);background:var(--aclt);}
+.page-nav-btn.recruit-tab.active{border-bottom-color:var(--acc);background:var(--acc);color:var(--acdk);}
+.page-nav-btn.recruit-tab:hover:not(.active){background:#fde8a0;}
+
+/* PAGES */
+.page{display:none;padding:2.5rem 2rem;}
+.page.active{display:block;}
+.page#page-recruit{padding:0;}
+
+/* LABELS */
+.sec-eye{display:inline-flex;align-items:center;gap:6px;background:var(--bllt);color:var(--bldk);font-size:11px;font-weight:700;letter-spacing:0.1em;padding:3px 10px;border-radius:var(--radius);margin-bottom:10px;}
+.sec-h2{font-size:22px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.sec-h2 span{color:var(--bl);}
+.sec-p{font-size:14px;color:var(--muted);line-height:1.75;max-width:500px;margin-bottom:1.5rem;}
+
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.svc{padding:1.3rem 1.1rem;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:#fff;}
+.svc:nth-child(3n){border-right:none;}
+.svc:nth-child(n+4){border-bottom:none;}
+.svc-icon{width:36px;height:36px;border-radius:var(--radius);background:var(--bllt);display:flex;align-items:center;justify-content:center;color:var(--bl);font-size:18px;margin-bottom:0.75rem;}
+.svc h3{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.svc p{font-size:12px;color:var(--muted);line-height:1.6;}
+
+/* REASONS */
+.reason-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.5rem;}
+.reason{display:flex;gap:12px;align-items:flex-start;padding:1rem;border-radius:var(--radius-lg);background:#f8fafc;}
+.reason-icon{width:38px;height:38px;min-width:38px;border-radius:var(--radius);background:var(--bllt);display:flex;align-items:center;justify-content:center;color:var(--bl);font-size:18px;}
+.reason h3{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.reason p{font-size:12px;color:var(--muted);line-height:1.6;}
+
+/* FLOW */
+.flow-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:1.5rem;border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.fstep{padding:1.2rem 1rem;border-right:0.5px solid var(--border);background:#fff;}
+.fstep:last-child{border-right:none;}
+.fnum{width:32px;height:32px;border-radius:50%;background:var(--bl);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-bottom:8px;}
+.fstep h3{font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.fstep p{font-size:11px;color:var(--muted);}
+
+/* PRICE */
+.price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:1.5rem;}
+.price-card{border-radius:var(--radius-lg);overflow:hidden;border:0.5px solid var(--border);background:#fff;}
+.price-card.featured{border:2px solid var(--bl);}
+.price-head{padding:1rem 1.1rem;background:var(--bl);}
+.price-head.dark{background:var(--bldk);}
+.price-head h3{color:#fff;font-size:14px;font-weight:700;margin-bottom:2px;}
+.price-head p{color:#B5D4F4;font-size:12px;}
+.price-body{padding:1.1rem;}
+.price-badge{display:inline-block;background:var(--acc);color:var(--acdk);font-size:11px;font-weight:700;padding:3px 10px;border-radius:var(--radius);margin-bottom:8px;}
+.price-main{font-size:26px;font-weight:700;color:var(--bl);margin-bottom:1px;}
+.price-unit{font-size:12px;color:var(--muted);margin-bottom:10px;}
+.price-items{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.price-items li{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.price-items li i.ok{font-size:14px;color:var(--blmd);}
+.price-items li i.warn{font-size:14px;color:#BA7517;}
+.price-note{font-size:11px;color:#94a3b8;margin-top:8px;line-height:1.5;}
+.info-box{margin-top:1.5rem;border-left:3px solid var(--bl);background:var(--bllt);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.2rem;}
+.info-box p{font-size:13px;color:var(--bldk);line-height:1.7;}
+
+/* ESTIMATE */
+.est-wrap{max-width:620px;}
+.est-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.est-field{display:flex;flex-direction:column;gap:4px;}
+.est-field label{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:5px;}
+.est-field label i{font-size:15px;color:var(--bl);}
+.est-field select{width:100%;font-size:14px;padding:9px 10px;border:0.5px solid var(--border);border-radius:var(--radius);background:#fff;color:var(--text);}
+.rate-note{background:var(--bllt);border-radius:var(--radius);padding:8px 12px;margin-bottom:1rem;font-size:12px;color:var(--bldk);display:flex;gap:16px;flex-wrap:wrap;}
+.tog-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.tog{font-size:13px;padding:6px 14px;border:0.5px solid var(--border);border-radius:var(--radius);cursor:pointer;background:#fff;color:var(--muted);user-select:none;transition:all 0.15s;}
+.tog.on{background:var(--bl);color:#fff;border-color:var(--bl);}
+.travel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:4px;}
+.tc{border:0.5px solid var(--border);border-radius:var(--radius);padding:10px 12px;cursor:pointer;background:#fff;transition:all 0.15s;}
+.tc.on{background:var(--bllt);border-color:var(--bl);}
+.tc-label{font-size:13px;font-weight:700;color:var(--text);}
+.tc.on .tc-label{color:var(--bldk);}
+.tc-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.tc.on .tc-sub{color:var(--bl);}
+.tc-price{font-size:13px;font-weight:700;color:var(--bl);margin-top:4px;}
+.result-box{background:var(--bldk);border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.5rem;}
+.result-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;}
+.result-label{color:#85B7EB;font-size:12px;margin-bottom:4px;}
+.result-total{color:var(--acc);font-size:34px;font-weight:700;}
+.result-note{color:#85B7EB;font-size:11px;margin-top:2px;}
+.breakdown{background:#0a3a6a;border-radius:var(--radius);padding:1rem;}
+.bk-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:0.5px solid rgba(255,255,255,0.08);font-size:13px;}
+.bk-row:last-child{border-bottom:none;padding-top:8px;margin-top:4px;font-weight:700;}
+.bk-row:last-child .bk-label{color:#B5D4F4;}
+.bk-row:last-child .bk-val{color:var(--acc);}
+.bk-label{color:#85B7EB;}
+.bk-val{color:#fff;}
+.est-actions{display:flex;gap:10px;margin-top:1rem;}
+.btn-est{background:var(--acc);color:var(--acdk);font-size:13px;font-weight:700;padding:10px 20px;border:none;border-radius:var(--radius);cursor:pointer;flex:1;}
+.btn-reset{background:transparent;color:#B5D4F4;font-size:13px;padding:10px 20px;border:0.5px solid rgba(255,255,255,0.25);border-radius:var(--radius);cursor:pointer;flex:1;}
+.divider{border:none;border-top:0.5px solid var(--border);margin:1.2rem 0;}
+.sec-title-sm{font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.sec-title-sm i{font-size:16px;color:var(--bl);}
+
+/* QUOTE FORM */
+.form-wrap{max-width:560px;}
+.form-row{margin-bottom:1rem;}
+.form-row label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px;}
+.form-row input,.form-row select,.form-row textarea{width:100%;font-size:14px;padding:9px 12px;border:0.5px solid var(--border);border-radius:var(--radius);background:#fff;color:var(--text);outline:none;transition:border-color 0.15s;}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--bl);}
+.form-row textarea{resize:vertical;min-height:80px;}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.req{color:var(--bl);font-size:11px;margin-left:4px;}
+.submit-btn{background:var(--bl);color:#fff;font-size:14px;font-weight:700;padding:12px;border:none;border-radius:var(--radius);cursor:pointer;width:100%;margin-top:4px;transition:opacity 0.15s;}
+.submit-btn:hover{opacity:0.88;}
+.form-note{font-size:12px;color:#94a3b8;margin-top:8px;line-height:1.6;}
+.sent-msg{display:none;background:var(--bllt);border-radius:var(--radius-lg);padding:2rem;text-align:center;margin-top:1rem;}
+.sent-msg i{font-size:32px;color:var(--bl);margin-bottom:8px;display:block;}
+.sent-msg h3{font-size:16px;font-weight:700;color:var(--bldk);margin-bottom:4px;}
+.sent-msg p{font-size:13px;color:var(--bl);}
+
+/* RECRUIT - bold design */
+.recruit-hero{background:var(--bldk);padding:2.5rem 2rem;border-bottom:4px solid var(--acc);position:relative;overflow:hidden;}
+.recruit-hero::before{content:"RECRUIT";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:80px;font-weight:900;color:rgba(255,255,255,0.04);letter-spacing:0.05em;pointer-events:none;white-space:nowrap;}
+.rh-eye{display:inline-flex;align-items:center;gap:6px;background:var(--acc);color:var(--acdk);font-size:11px;font-weight:700;letter-spacing:0.15em;padding:4px 14px;border-radius:4px;margin-bottom:1rem;}
+.rh-h1{color:#fff;font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.rh-h1 span{color:var(--acc);}
+.rh-sub{color:#85B7EB;font-size:13px;line-height:1.7;max-width:480px;}
+.now-hiring{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:var(--acdk);font-size:12px;font-weight:700;padding:6px 16px;border-radius:4px;margin-top:1.2rem;}
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:0;border-left:0.5px solid var(--border);border-right:0.5px solid var(--border);}
+.job{background:#fff;border-bottom:0.5px solid var(--border);}
+.job:first-child{border-right:0.5px solid var(--border);}
+.job-header{padding:1.5rem 1.5rem 1rem;border-bottom:3px solid var(--bl);}
+.job-header.night{border-bottom-color:var(--bldk);}
+.job-type-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bllt);color:var(--bldk);font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;margin-bottom:10px;}
+.job-type-badge.night-badge{background:#e8edf5;}
+.job-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.job-desc-short{font-size:13px;color:var(--muted);line-height:1.6;}
+.salary-block{display:flex;align-items:flex-end;gap:6px;padding:1.2rem 1.5rem;background:var(--bllt);border-bottom:0.5px solid var(--border);}
+.salary-block.night-sal{background:#f0f4fa;}
+.salary-yen{font-size:32px;font-weight:700;color:var(--bl);line-height:1;}
+.salary-unit{font-size:13px;color:var(--muted);padding-bottom:4px;}
+.salary-note{font-size:11px;color:var(--bl);margin-left:8px;padding-bottom:4px;}
+.job-details{padding:1.2rem 1.5rem;}
+.detail-row{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:0.5px solid #f1f5f9;font-size:13px;}
+.detail-row:last-child{border-bottom:none;}
+.detail-icon{color:var(--bl);font-size:16px;min-width:20px;margin-top:1px;}
+.detail-key{color:var(--muted);min-width:72px;}
+.detail-val{color:var(--text);font-weight:700;}
+.job-cta{padding:1rem 1.5rem 1.5rem;}
+.btn-apply{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--bl);color:#fff;font-size:14px;font-weight:700;padding:13px;border:none;border-radius:6px;cursor:pointer;transition:opacity 0.15s;}
+.btn-apply:hover{opacity:0.88;}
+.btn-apply.night-btn{background:var(--bldk);}
+.appeal-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:0.5px solid var(--border);border-top:none;}
+.appeal-item{padding:1rem 1.2rem;border-right:0.5px solid var(--border);background:#fff;display:flex;align-items:center;gap:10px;}
+.appeal-item:last-child{border-right:none;}
+.appeal-icon{width:36px;height:36px;min-width:36px;border-radius:6px;background:var(--bllt);display:flex;align-items:center;justify-content:center;color:var(--bl);font-size:18px;}
+.appeal-item h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.appeal-item p{font-size:11px;color:var(--muted);}
+.benefits-section{background:var(--bldk);padding:2rem;border-top:4px solid var(--acc);}
+.benefits-head{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem;}
+.benefits-head h3{color:#fff;font-size:16px;font-weight:700;}
+.benefits-head i{font-size:20px;color:var(--acc);}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.benefit{background:#0C447C;border-radius:8px;padding:1rem;text-align:center;border:0.5px solid rgba(255,255,255,0.1);}
+.benefit i{font-size:24px;color:var(--acc);margin-bottom:6px;display:block;}
+.benefit h4{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;}
+.benefit p{font-size:11px;color:#85B7EB;}
+.apply-bar{background:var(--acc);padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.apply-bar-txt{color:var(--acdk);font-size:14px;font-weight:700;}
+.apply-bar-txt span{font-size:12px;font-weight:400;margin-left:8px;}
+.btn-apply-bar{background:var(--bldk);color:#fff;font-size:13px;font-weight:700;padding:10px 24px;border:none;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:6px;}
+
+/* CTA & FOOTER */
+.cta-bar{background:var(--bldk);padding:2rem;display:flex;justify-content:space-between;align-items:center;border-top:4px solid var(--acc);}
+.cta-txt h3{color:#fff;font-size:17px;font-weight:700;margin-bottom:4px;}
+.cta-txt p{color:#85B7EB;font-size:13px;}
+.cta-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.cta-tel{color:var(--acc);font-size:22px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.cta-sub{color:#85B7EB;font-size:12px;}
+.footer{padding:1.2rem 2rem;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;background:#fff;}
+.footer-left{font-size:13px;font-weight:700;color:var(--text);}
+.footer-addr{font-size:12px;color:var(--muted);}
+.footer-copy{font-size:12px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-icon"><i class="ti ti-star"></i></div>
+    <div>
+      <div class="nav-logo-text">有限会社スター</div>
+      <div class="nav-logo-sub">広島市西区大宮 — STAR Co., Ltd.</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a onclick="showPage('home')">トップ</a>
+    <a onclick="showPage('price')">警備料金</a>
+    <a onclick="showPage('estimate')">簡易見積もり</a>
+    <a onclick="showPage('quote')">お見積もり</a>
+    <a onclick="showPage('recruit')" class="recruit-link"><i class="ti ti-users" style="font-size:14px;vertical-align:-2px;"></i> 採用情報</a>
+  </div>
+  <div class="nav-tel"><i class="ti ti-phone"></i>082-537-0395</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><i class="ti ti-map-pin"></i>広島の交通安全を守る</div>
+    <h1>安全・確実・<br><span>迅速</span>な<br>交通誘導業務</h1>
+    <p>有限会社スターは広島市西区を拠点に、工事現場・イベント・道路規制など、あらゆる現場で安全を確保します。</p>
+    <div class="hero-btns">
+      <button class="btn-acc" onclick="showPage('estimate')">かんたん見積もり</button>
+      <button class="btn-ghost" onclick="showPage('price')">料金を見る</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hstat"><div class="hstat-num">24時間</div><div class="hstat-label">対応可能</div></div>
+    <div class="hstat"><div class="hstat-num">有資格</div><div class="hstat-label">検定取得スタッフ</div></div>
+    <div class="hstat"><div class="hstat-num">広島</div><div class="hstat-label">県内全域対応</div></div>
+    <div class="hstat"><div class="hstat-num">即日</div><div class="hstat-label">お見積もり</div></div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-item"><i class="ti ti-shield-check"></i>安全第一の業務遂行</div>
+  <div class="strip-item"><i class="ti ti-clock"></i>24時間・365日対応</div>
+  <div class="strip-item"><i class="ti ti-map-pin"></i>広島市西区大宮</div>
+  <div class="strip-item"><i class="ti ti-certificate"></i>警備業法適合</div>
+  <div class="strip-item" style="margin-left:auto;"><i class="ti ti-users"></i><span onclick="showPage('recruit')" style="cursor:pointer;text-decoration:underline;">スタッフ募集中！</span></div>
+</div>
+
+<div class="page-nav">
+  <button class="page-nav-btn active" id="tab-home" onclick="showPage('home')"><i class="ti ti-home"></i> トップ</button>
+  <button class="page-nav-btn" id="tab-price" onclick="showPage('price')"><i class="ti ti-currency-yen"></i> 警備料金</button>
+  <button class="page-nav-btn" id="tab-estimate" onclick="showPage('estimate')"><i class="ti ti-calculator"></i> 簡易見積もり</button>
+  <button class="page-nav-btn" id="tab-quote" onclick="showPage('quote')"><i class="ti ti-file-text"></i> お見積もり</button>
+  <button class="page-nav-btn recruit-tab" id="tab-recruit" onclick="showPage('recruit')"><i class="ti ti-users"></i> 採用情報</button>
+</div>
+
+<!-- TOP -->
+<div class="page active" id="page-home">
+  <div class="sec-eye"><i class="ti ti-briefcase"></i>Services</div>
+  <h2 class="sec-h2">主な<span>業務内容</span></h2>
+  <p class="sec-p">工事現場からイベントまで、幅広い交通誘導業務に対応しています。</p>
+  <div class="services">
+    <div class="svc"><div class="svc-icon"><i class="ti ti-road"></i></div><h3>工事現場の交通誘導</h3><p>道路工事・建設現場での車両・歩行者の安全誘導を行います。</p></div>
+    <div class="svc"><div class="svc-icon"><i class="ti ti-calendar-event"></i></div><h3>イベント交通整理</h3><p>地域イベントや催し物での駐車場・周辺道路の整理を担当します。</p></div>
+    <div class="svc"><div class="svc-icon"><i class="ti ti-traffic-cone"></i></div><h3>道路規制・片側通行</h3><p>片側交互通行など道路規制が必要な場面での安全確保を行います。</p></div>
+    <div class="svc"><div class="svc-icon"><i class="ti ti-building-factory-2"></i></div><h3>工場・施設内誘導</h3><p>工場構内や商業施設の車両誘導業務を担います。</p></div>
+    <div class="svc"><div class="svc-icon"><i class="ti ti-truck"></i></div><h3>大型車両誘導</h3><p>大型トラックや重機の搬入・搬出時の専門誘導を行います。</p></div>
+    <div class="svc"><div class="svc-icon"><i class="ti ti-phone-call"></i></div><h3>緊急・スポット対応</h3><p>急な現場ニーズにも柔軟対応。即日手配が可能です。</p></div>
+  </div>
+  <div style="margin-top:2.5rem;">
+    <div class="sec-eye"><i class="ti ti-award"></i>Why Choose Us</div>
+    <h2 class="sec-h2">スターが<span>選ばれる</span>理由</h2>
+    <div class="reason-grid">
+      <div class="reason"><div class="reason-icon"><i class="ti ti-award"></i></div><div><h3>有資格者による安心体制</h3><p>交通誘導警備業務検定取得スタッフが在籍。法令に基づいた確実な業務を提供します。</p></div></div>
+      <div class="reason"><div class="reason-icon"><i class="ti ti-clock-24"></i></div><div><h3>24時間・365日対応</h3><p>深夜・早朝・休日の現場にも対応。緊急時でもすぐにご連絡ください。</p></div></div>
+      <div class="reason"><div class="reason-icon"><i class="ti ti-map-pin"></i></div><div><h3>広島市西区拠点</h3><p>広島市内はもちろん県内各地への出動が可能。地元密着で迅速に対応します。</p></div></div>
+      <div class="reason"><div class="reason-icon"><i class="ti ti-currency-yen"></i></div><div><h3>明確な料金体系</h3><p>わかりやすい料金設定と丁寧なお見積もりで安心してご依頼いただけます。</p></div></div>
+    </div>
+  </div>
+  <div style="margin-top:2.5rem;">
+    <div class="sec-eye"><i class="ti ti-list-numbers"></i>Flow</div>
+    <h2 class="sec-h2">ご依頼の<span>流れ</span></h2>
+    <div class="flow-row" style="margin-top:1rem;">
+      <div class="fstep"><div class="fnum">1</div><h3>お問い合わせ</h3><p>電話・メールにてご連絡</p></div>
+      <div class="fstep"><div class="fnum">2</div><h3>現場確認・見積</h3><p>内容を確認し即日ご提示</p></div>
+      <div class="fstep"><div class="fnum">3</div><h3>ご契約・手配</h3><p>スタッフを手配します</p></div>
+      <div class="fstep"><div class="fnum">4</div><h3>業務実施</h3><p>安全・確実に遂行</p></div>
+    </div>
+  </div>
+  <div style="margin-top:2rem;background:var(--aclt);border:2px solid var(--acc);border-radius:var(--radius-lg);padding:1.5rem;display:flex;justify-content:space-between;align-items:center;">
+    <div>
+      <div style="font-size:11px;font-weight:700;color:var(--acdk);letter-spacing:0.1em;margin-bottom:6px;">RECRUIT — 採用情報</div>
+      <div style="font-size:16px;font-weight:700;color:var(--text);">スタッフを随時募集中！未経験・経験者歓迎</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px;">日勤¥10,500〜 / 夜勤¥13,000〜（日給）</div>
+    </div>
+    <button class="btn-acc" onclick="showPage('recruit')" style="white-space:nowrap;"><i class="ti ti-users" style="font-size:15px;vertical-align:-2px;margin-right:4px;"></i>採用情報を見る</button>
+  </div>
+</div>
+
+<!-- PRICE -->
+<div class="page" id="page-price">
+  <div class="sec-eye"><i class="ti ti-currency-yen"></i>Pricing</div>
+  <h2 class="sec-h2">警備<span>料金</span>の目安</h2>
+  <p class="sec-p">下記はモデルケースによる参考料金です。現場の規模・時間帯・日数によって変動します。正確なお見積もりはお問い合わせください。</p>
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="price-head"><h3>日勤プラン</h3><p>通常勤務帯（日中）</p></div>
+      <div class="price-body">
+        <div class="price-badge">1名あたり</div>
+        <div class="price-main">¥18,000〜</div>
+        <div class="price-unit">／日（税別）</div>
+        <ul class="price-items">
+          <li><i class="ti ti-check ok"></i>工事現場・施設内誘導</li>
+          <li><i class="ti ti-check ok"></i>片側交互通行対応</li>
+          <li><i class="ti ti-alert-circle warn"></i>必要機材は別途費用</li>
+        </ul>
+        <div class="price-note">※機材費はご相談ください</div>
+      </div>
+    </div>
+    <div class="price-card featured">
+      <div class="price-head dark"><h3>夜勤プラン</h3><p>夜間・深夜帯</p></div>
+      <div class="price-body">
+        <div class="price-badge">人気プラン</div>
+        <div class="price-main">¥27,000〜</div>
+        <div class="price-unit">／夜（税別）</div>
+        <ul class="price-items">
+          <li><i class="ti ti-check ok"></i>深夜割増対応</li>
+          <li><i class="ti ti-check ok"></i>道路工事・インフラ工事</li>
+          <li><i class="ti ti-alert-circle warn"></i>必要機材は別途費用</li>
+        </ul>
+        <div class="price-note">※機材費はご相談ください</div>
+      </div>
+    </div>
+    <div class="price-card">
+      <div class="price-head"><h3>イベントプラン</h3><p>半日〜1日・人数応相談</p></div>
+      <div class="price-body">
+        <div class="price-badge">複数名対応</div>
+        <div class="price-main">要お見積もり</div>
+        <div class="price-unit">現場規模による</div>
+        <ul class="price-items">
+          <li><i class="ti ti-check ok"></i>地域イベント・祭り</li>
+          <li><i class="ti ti-check ok"></i>駐車場・周辺道路整理</li>
+          <li><i class="ti ti-check ok"></i>複数名チーム対応可</li>
+        </ul>
+        <div class="price-note">※規模・日数で個別見積</div>
+      </div>
+    </div>
+  </div>
+  <div class="info-box">
+    <p><strong>機材費・その他について：</strong>日勤・夜勤ともに、誘導棒・カラーコーン・夜間照明等の機材費は別途となります。交通費・宿泊費が発生する場合も別途ご相談ください。</p>
+  </div>
+  <div style="margin-top:1.5rem;text-align:center;">
+    <button class="btn-acc" onclick="showPage('estimate')">かんたん見積もりを試算する</button>
+  </div>
+</div>
+
+<!-- ESTIMATE -->
+<div class="page" id="page-estimate">
+  <div class="sec-eye"><i class="ti ti-calculator"></i>簡易見積もり</div>
+  <h2 class="sec-h2">料金を<span>かんたん試算</span></h2>
+  <p class="sec-p">条件を選ぶだけで概算金額を即時表示します。正式見積もりは別途ご相談ください。</p>
+  <div class="est-wrap">
+    <div class="sec-title-sm"><i class="ti ti-clock"></i>勤務区分・日数</div>
+    <div class="est-grid2">
+      <div class="est-field"><label><i class="ti ti-sun"></i>勤務区分</label><select id="shift" onchange="calc()"><option value="nikkin">日勤</option><option value="yakin">夜勤</option></select></div>
+      <div class="est-field"><label><i class="ti ti-calendar"></i>日数</label>
+        <select id="days" onchange="calc()">
+          <option value="1">1日</option><option value="2">2日</option><option value="3">3日</option><option value="4">4日</option><option value="5">5日</option><option value="7">7日</option><option value="10">10日</option><option value="14">14日</option><option value="20">20日</option><option value="30">30日</option>
+        </select>
+      </div>
+    </div>
+    <div class="rate-note"><span>誘導員B：日勤 ¥18,000 / 夜勤 ¥27,000</span><span>誘導員A：日勤 ¥23,000 / 夜勤 ¥32,000</span></div>
+    <div class="sec-title-sm"><i class="ti ti-users"></i>人数</div>
+    <div class="est-grid2">
+      <div class="est-field"><label><i class="ti ti-user"></i>交通誘導員B（人）</label>
+        <select id="tB" onchange="calc()"><option value="0">0名</option><option value="1" selected>1名</option><option value="2">2名</option><option value="3">3名</option><option value="4">4名</option><option value="5">5名</option><option value="6">6名</option><option value="8">8名</option><option value="10">10名</option></select>
+      </div>
+      <div class="est-field"><label><i class="ti ti-user-check"></i>交通誘導員A（人）</label>
+        <select id="tA" onchange="calc()"><option value="0" selected>0名</option><option value="1">1名</option><option value="2">2名</option><option value="3">3名</option><option value="4">4名</option><option value="5">5名</option><option value="6">6名</option><option value="8">8名</option><option value="10">10名</option></select>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="sec-title-sm"><i class="ti ti-tool"></i>資機材（別途）</div>
+    <div class="est-grid2" style="margin-bottom:8px;">
+      <div class="est-field"><label><i class="ti ti-device-mobile"></i>無線機（台）</label>
+        <select id="radio" onchange="calc()"><option value="0">0台</option><option value="1">1台</option><option value="2">2台</option><option value="3">3台</option><option value="4">4台</option><option value="5">5台</option><option value="6">6台</option><option value="8">8台</option><option value="10">10台</option></select>
+      </div>
+      <div class="est-field"><label><i class="ti ti-traffic-cone"></i>資機材一式</label>
+        <select id="equip" onchange="calc()"><option value="0">なし</option><option value="1">あり（¥10,000）</option></select>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="sec-title-sm"><i class="ti ti-adjustments"></i>加算オプション</div>
+    <div class="est-field" style="margin-bottom:12px;">
+      <label>休日・祝日</label>
+      <div class="tog-row"><div class="tog" id="tog-hol" onclick="togClick('hol')">休日・祝日（+25%）</div></div>
+    </div>
+    <div class="est-field">
+      <label><i class="ti ti-car"></i>出張交通費（距離による加算）</label>
+      <div class="travel-grid">
+        <div class="tc on" id="tc-0" onclick="setTravel(0,0,'なし',false)"><div class="tc-label">なし</div><div class="tc-sub">広島市西区近郊</div><div class="tc-price">+¥0</div></div>
+        <div class="tc" id="tc-1" onclick="setTravel(1,1500,'近距離（30〜60km）',false)"><div class="tc-label">近距離</div><div class="tc-sub">30km〜60km</div><div class="tc-price">+¥1,500</div></div>
+        <div class="tc" id="tc-2" onclick="setTravel(2,3000,'中距離（60〜90km）',false)"><div class="tc-label">中距離</div><div class="tc-sub">60km〜90km</div><div class="tc-price">+¥3,000</div></div>
+        <div class="tc" id="tc-3" onclick="setTravel(3,4500,'遠距離（90〜120km）',true)"><div class="tc-label">遠距離</div><div class="tc-sub">90km〜120km</div><div class="tc-price">+¥4,500〜</div></div>
+        <div class="tc" id="tc-4" onclick="setTravel(4,8000,'県外等（120km〜）',true)"><div class="tc-label">県外等</div><div class="tc-sub">120km〜・要相談</div><div class="tc-price">+¥8,000〜</div></div>
+      </div>
+    </div>
+    <div class="result-box">
+      <div class="result-top">
+        <div><div class="result-label">概算合計金額（税別）</div><div class="result-total" id="total">¥18,000</div><div class="result-note">※あくまで参考金額です。正式見積もりはお問い合わせください。</div></div>
+        <div style="text-align:right;"><div class="result-label">規模</div><div style="color:#B5D4F4;font-size:12px;" id="scale-lbl">1日 × 1名</div></div>
+      </div>
+      <div class="breakdown" id="breakdown"></div>
+      <div class="est-actions">
+        <button class="btn-est" onclick="showPage('quote')">正式見積もりを依頼する</button>
+        <button class="btn-reset" onclick="resetCalc()"><i class="ti ti-refresh"></i> リセット</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="page" id="page-quote">
+  <div class="sec-eye"><i class="ti ti-file-text"></i>Estimate</div>
+  <h2 class="sec-h2">無料<span>お見積もり</span>フォーム</h2>
+  <p class="sec-p">下記フォームにご記入ください。内容を確認のうえ、原則即日にご連絡いたします。</p>
+  <div class="form-wrap" id="quote-form">
+    <div class="form-2col">
+      <div class="form-row"><label>お名前<span class="req">必須</span></label><input type="text" placeholder="山田 太郎"></div>
+      <div class="form-row"><label>会社名</label><input type="text" placeholder="株式会社〇〇"></div>
+    </div>
+    <div class="form-2col">
+      <div class="form-row"><label>電話番号<span class="req">必須</span></label><input type="tel" placeholder="082-000-0000"></div>
+      <div class="form-row"><label>メールアドレス<span class="req">必須</span></label><input type="email" placeholder="example@email.com"></div>
+    </div>
+    <div class="form-row"><label>業務の種類<span class="req">必須</span></label>
+      <select><option value="">選択してください</option><option>工事現場の交通誘導</option><option>イベント交通整理</option><option>道路規制・片側通行</option><option>工場・施設内誘導</option><option>大型車両誘導</option><option>その他</option></select>
+    </div>
+    <div class="form-2col">
+      <div class="form-row"><label>希望日<span class="req">必須</span></label><input type="date"></div>
+      <div class="form-row"><label>必要人数の目安</label>
+        <select><option value="">未定・相談したい</option><option>1名</option><option>2〜3名</option><option>4〜5名</option><option>6名以上</option></select>
+      </div>
+    </div>
+    <div class="form-row"><label>現場の所在地</label><input type="text" placeholder="広島市中区〇〇"></div>
+    <div class="form-row"><label>業務内容・ご要望</label><textarea placeholder="現場の状況、作業内容、時間帯、特記事項などをご記入ください。"></textarea></div>
+    <button class="submit-btn" onclick="submitForm()">見積もりを依頼する</button>
+    <p class="form-note">※送信後、担当者より折り返しご連絡いたします。緊急の場合はお電話（082-537-0395）にてご連絡ください。</p>
+  </div>
+  <div class="sent-msg" id="sent-msg">
+    <i class="ti ti-circle-check"></i>
+    <h3>送信が完了しました</h3>
+    <p>お見積もりのご依頼ありがとうございます。<br>担当者より原則即日ご連絡いたします。</p>
+  </div>
+</div>
+
+<!-- RECRUIT -->
+<div class="page" id="page-recruit">
+  <div class="recruit-hero">
+    <div class="rh-eye"><i class="ti ti-users"></i>RECRUIT 採用情報</div>
+    <h1 class="rh-h1">広島の安全を守る<br><span>仲間を募集中！</span></h1>
+    <p class="rh-sub">有限会社スターでは交通誘導警備スタッフを随時募集しています。<br>未経験・経験者どちらも歓迎。資格取得支援も充実しています。</p>
+    <div class="now-hiring"><i class="ti ti-circle-check"></i>今すぐ応募できます — 随時採用中</div>
+  </div>
+  <div class="jobs">
+    <div class="job" style="border-right:0.5px solid var(--border);">
+      <div class="job-header">
+        <div class="job-type-badge"><i class="ti ti-sun"></i>日勤</div>
+        <div class="job-title">交通誘導スタッフ</div>
+        <div class="job-desc-short">日中の現場で安全を守る。生活リズムを崩さず働ける。</div>
+      </div>
+      <div class="salary-block">
+        <div class="salary-yen">¥10,500</div><div class="salary-unit">〜 / 日給（税別）</div><div class="salary-note">※経験・資格で優遇</div>
+      </div>
+      <div class="job-details">
+        <div class="detail-row"><i class="ti ti-map-pin detail-icon"></i><span class="detail-key">勤務地</span><span class="detail-val">広島県内各現場</span></div>
+        <div class="detail-row"><i class="ti ti-clock detail-icon"></i><span class="detail-key">勤務時間</span><span class="detail-val">日中シフト（応相談）</span></div>
+        <div class="detail-row"><i class="ti ti-calendar detail-icon"></i><span class="detail-key">勤務日数</span><span class="detail-val">週2日〜OK</span></div>
+        <div class="detail-row"><i class="ti ti-certificate detail-icon"></i><span class="detail-key">資格</span><span class="detail-val">不問・未経験歓迎</span></div>
+        <div class="detail-row"><i class="ti ti-user-plus detail-icon"></i><span class="detail-key">雇用形態</span><span class="detail-val">正社員・アルバイト</span></div>
+      </div>
+      <div class="job-cta"><button class="btn-apply" onclick="showPage('quote')"><i class="ti ti-send"></i>この職種に応募する</button></div>
+    </div>
+    <div class="job">
+      <div class="job-header night">
+        <div class="job-type-badge night-badge"><i class="ti ti-moon"></i>夜勤</div>
+        <div class="job-title">交通誘導スタッフ</div>
+        <div class="job-desc-short">夜間の道路工事現場を守る。夜勤手当で高収入を実現。</div>
+      </div>
+      <div class="salary-block night-sal">
+        <div class="salary-yen">¥13,000</div><div class="salary-unit">〜 / 日給（税別）</div><div class="salary-note">※夜勤手当含む</div>
+      </div>
+      <div class="job-details">
+        <div class="detail-row"><i class="ti ti-map-pin detail-icon"></i><span class="detail-key">勤務地</span><span class="detail-val">広島県内各現場</span></div>
+        <div class="detail-row"><i class="ti ti-clock detail-icon"></i><span class="detail-key">勤務時間</span><span class="detail-val">夜間・深夜シフト</span></div>
+        <div class="detail-row"><i class="ti ti-calendar detail-icon"></i><span class="detail-key">勤務日数</span><span class="detail-val">週2日〜OK・副業可</span></div>
+        <div class="detail-row"><i class="ti ti-certificate detail-icon"></i><span class="detail-key">資格</span><span class="detail-val">不問・未経験歓迎</span></div>
+        <div class="detail-row"><i class="ti ti-user-plus detail-icon"></i><span class="detail-key">雇用形態</span><span class="detail-val">正社員・アルバイト</span></div>
+      </div>
+      <div class="job-cta"><button class="btn-apply night-btn" onclick="showPage('quote')"><i class="ti ti-send"></i>この職種に応募する</button></div>
+    </div>
+  </div>
+  <div class="appeal-strip">
+    <div class="appeal-item"><div class="appeal-icon"><i class="ti ti-school"></i></div><div><h4>資格取得支援</h4><p>検定費用を会社が負担</p></div></div>
+    <div class="appeal-item"><div class="appeal-icon"><i class="ti ti-wallet"></i></div><div><h4>各種手当充実</h4><p>夜間・交通・皆勤手当あり</p></div></div>
+    <div class="appeal-item"><div class="appeal-icon"><i class="ti ti-shield"></i></div><div><h4>安全研修あり</h4><p>未経験でも安心の教育体制</p></div></div>
+  </div>
+  <div class="benefits-section">
+    <div class="benefits-head"><i class="ti ti-star"></i><h3>スターで働く6つの魅力</h3></div>
+    <div class="benefits-grid">
+      <div class="benefit"><i class="ti ti-school"></i><h4>資格取得支援</h4><p>検定取得費用を会社が負担</p></div>
+      <div class="benefit"><i class="ti ti-calendar-time"></i><h4>シフト融通</h4><p>週2日〜相談OK</p></div>
+      <div class="benefit"><i class="ti ti-shield"></i><h4>安全研修充実</h4><p>未経験でも安心の教育体制</p></div>
+      <div class="benefit"><i class="ti ti-wallet"></i><h4>各種手当あり</h4><p>夜間・交通・皆勤手当</p></div>
+      <div class="benefit"><i class="ti ti-users"></i><h4>アットホーム</h4><p>少数精鋭のチームワーク</p></div>
+      <div class="benefit"><i class="ti ti-map-pin"></i><h4>地元密着</h4><p>広島で長く活躍できる</p></div>
+    </div>
+  </div>
+  <div class="apply-bar">
+    <div class="apply-bar-txt">お気軽にお問い合わせください<span>電話でのご応募も歓迎します</span></div>
+    <button class="btn-apply-bar" onclick="window.location.href='tel:0825370395'"><i class="ti ti-phone"></i>082-537-0395</button>
+  </div>
+</div>
+
+<div class="cta-bar">
+  <div class="cta-txt"><h3>まずはお気軽にご相談ください</h3><p>広島市西区大宮1-1-38　広島県内どこでも対応いたします。</p></div>
+  <div class="cta-right">
+    <div class="cta-tel"><i class="ti ti-phone"></i>082-537-0395</div>
+    <div class="cta-sub">受付時間 8:00〜20:00（緊急時24時間）</div>
+    <button class="btn-acc" onclick="showPage('quote')">メールで見積もり依頼</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div>
+    <div class="footer-left">有限会社スター</div>
+    <div class="footer-addr">〒733-0036 広島市西区大宮1-1-38　TEL: 082-537-0395</div>
+  </div>
+  <div class="footer-copy">© 2024 有限会社スター</div>
+</footer>
+
+<script>
+const RATES={tB:{nikkin:18000,yakin:27000},tA:{nikkin:23000,yakin:32000}};
+const togs={hol:false};
+let travelIdx=0,travelFee=0,travelLabel='なし',travelAsk=false;
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.page-nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function togClick(k){
+  togs[k]=!togs[k];
+  document.getElementById('tog-'+k).classList.toggle('on',togs[k]);
+  calc();
+}
+function setTravel(idx,fee,label,ask){
+  travelIdx=idx;travelFee=fee;travelLabel=label;travelAsk=ask;
+  for(let i=0;i<=4;i++) document.getElementById('tc-'+i).classList.remove('on');
+  document.getElementById('tc-'+idx).classList.add('on');
+  calc();
+}
+function fmt(n){return '¥'+Math.round(n).toLocaleString();}
+function calc(){
+  const shift=document.getElementById('shift').value;
+  const days=parseInt(document.getElementById('days').value);
+  const nB=parseInt(document.getElementById('tB').value);
+  const nA=parseInt(document.getElementById('tA').value);
+  const nRadio=parseInt(document.getElementById('radio').value);
+  const equipFlg=parseInt(document.getElementById('equip').value);
+  const mul=1+(togs.hol?0.25:0);
+  const labor=(nB*RATES.tB[shift]+nA*RATES.tA[shift])*days*mul;
+  const radioTotal=nRadio*1000*days;
+  const equipTotal=equipFlg*10000;
+  const total=labor+radioTotal+equipTotal+travelFee;
+  const totalPpl=nB+nA;
+  const suf=travelAsk?'〜':'';
+  document.getElementById('total').textContent=fmt(total)+suf;
+  document.getElementById('scale-lbl').textContent=days+'日 × '+totalPpl+'名';
+  const rows=[];
+  if(nB>0) rows.push({l:'交通誘導員B '+nB+'名 × '+days+'日'+(togs.hol?' (+25%)':''),v:nB*RATES.tB[shift]*days*mul});
+  if(nA>0) rows.push({l:'交通誘導員A '+nA+'名 × '+days+'日'+(togs.hol?' (+25%)':''),v:nA*RATES.tA[shift]*days*mul});
+  if(nRadio>0) rows.push({l:'無線機 '+nRadio+'台 × '+days+'日',v:radioTotal});
+  if(equipFlg) rows.push({l:'資機材一式',v:equipTotal});
+  if(travelFee>0) rows.push({l:'出張交通費（'+travelLabel+'）',v:travelFee,ask:travelAsk});
+  let html='';
+  if(rows.length===0){
+    html='<div class="bk-row"><span class="bk-label">人数を選択してください</span><span style="color:rgba(255,255,255,0.3)">—</span></div>';
+  } else {
+    rows.forEach(r=>{html+=`<div class="bk-row"><span class="bk-label">${r.l}</span><span class="bk-val">${fmt(r.v)}${r.ask?'〜':''}</span></div>`;});
+  }
+  html+=`<div class="bk-row"><span class="bk-label">合計（税別）</span><span class="bk-val">${fmt(total)}${suf}</span></div>`;
+  document.getElementById('breakdown').innerHTML=html;
+}
+function resetCalc(){
+  document.getElementById('shift').value='nikkin';
+  document.getElementById('days').value='1';
+  document.getElementById('tB').value='1';
+  document.getElementById('tA').value='0';
+  document.getElementById('radio').value='0';
+  document.getElementById('equip').value='0';
+  togs.hol=false;
+  document.getElementById('tog-hol').classList.remove('on');
+  setTravel(0,0,'なし',false);
+}
+function submitForm(){
+  document.getElementById('quote-form').style.display='none';
+  document.getElementById('sent-msg').style.display='block';
+}
+calc();
+</script>
+</body>
+</html>
